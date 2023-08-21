@@ -58,7 +58,7 @@ fun TotalTimeGraph(timeDB: TimeDataDatabase) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxSize()
         ) {
             Text(
                 text = "Total Time",
@@ -67,11 +67,14 @@ fun TotalTimeGraph(timeDB: TimeDataDatabase) {
                 modifier = Modifier.padding(8.dp)
             )
 
-            Column(modifier = Modifier
-                .fillMaxWidth()
+            Column(
+                verticalArrangement = Arrangement.Bottom,
+                modifier = Modifier
+                .fillMaxSize()
                 .verticalScroll(rememberScrollState())
+                .background(Color(0xfff0f0f0))
             ) {
-                LazyRow() {
+                LazyRow(verticalAlignment = Alignment.Bottom) {
                     items(wcList) {wc ->
                         //work contentの合計時間を取得
                         var wcTime by remember { mutableStateOf(0) }
@@ -90,7 +93,6 @@ fun TotalTimeGraph(timeDB: TimeDataDatabase) {
                             verticalArrangement = Arrangement.Bottom,
                             horizontalAlignment = Alignment.CenterHorizontally,
                             modifier = Modifier
-                                .fillMaxHeight()
                                 .padding(8.dp)
                         ) {
                             Box(
@@ -104,9 +106,11 @@ fun TotalTimeGraph(timeDB: TimeDataDatabase) {
                                 text = wc,
                                 fontWeight = FontWeight.SemiBold,
                             )
-                            Spacer(modifier = Modifier.height(3.dp))
 
-                            Text(text = wcH.toString() + "h " + wcM.toString() + "m",)
+                            Text(
+                                text = wcH.toString() + "h " + wcM.toString() + "m",
+                                fontWeight = FontWeight.SemiBold
+                            )
                         }
                     }
                 }

@@ -6,6 +6,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -294,6 +295,40 @@ fun PreviewTimeMeasuremetScreen() {
         TimeDataDatabase.getdb(LocalContext.current.applicationContext),
         WCDatabase.getDB(LocalContext.current.applicationContext)
     )
+}
+
+@Preview
+@Composable
+fun PreviewRadioBtn() {
+    val (selectedOption, onOptionSelected) = remember { mutableStateOf<String?>(null) }
+    var str = "test"
+
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .selectable(
+                selected = (str == selectedOption),
+                onClick = {
+                    onOptionSelected(str)
+                }
+            )
+            .padding(horizontal = 16.dp)
+    ) {
+        RadioButton(
+            selected = (str == selectedOption),
+            colors = RadioButtonDefaults.colors(
+                selectedColor = Color(0xff00f0f0),
+                unselectedColor = Color.Black
+            ),
+            onClick = {
+                onOptionSelected(str)
+            },
+            modifier = Modifier
+                .padding(3.dp)
+        )
+
+        DefaultTxt(txt = str)
+    }
 }
 
 /*
