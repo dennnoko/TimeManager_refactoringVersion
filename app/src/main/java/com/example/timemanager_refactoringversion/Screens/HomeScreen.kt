@@ -14,18 +14,22 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.timemanager_refactoringversion.R
+import com.example.timemanager_refactoringversion.RoomOfTimeData.TimeDataDatabase
+import com.example.timemanager_refactoringversion.UIcomponents.TotalTimeGraph
 
 @Composable
-fun HomeScreen(navController: NavController) {
+fun HomeScreen(navController: NavController, timeDB: TimeDataDatabase) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
@@ -49,6 +53,8 @@ fun HomeScreen(navController: NavController) {
         NavigateButton(txt = "Data management") {
             navController.navigate("DataScreen")
         }
+
+        TotalTimeGraph(timeDB)
     }
 }
 
@@ -77,8 +83,9 @@ fun NavigateButton(txt: String, btnTodo: () -> Unit) {
 @Composable
 fun PreviewHomeScreen() {
     val navController = rememberNavController()
+    val timeDB = TimeDataDatabase.getdb(LocalContext.current.applicationContext)
 
     Surface() {
-        HomeScreen(navController = navController)
+        HomeScreen(navController = navController, timeDB)
     }
 }
