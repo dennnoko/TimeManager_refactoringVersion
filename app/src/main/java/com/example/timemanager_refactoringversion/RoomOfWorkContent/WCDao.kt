@@ -11,7 +11,7 @@ interface WCDao {
     @Insert
     suspend fun insertWC(wc: WCEntity)
     //IDで作業を選択して削除
-    @Query("delete from WCEntity where id = id")
+    @Query("delete from WCEntity where id = :id")
     suspend fun deleteWCById(id: Int)
     //リストの取得
     @Query("select * from WCEntity")
