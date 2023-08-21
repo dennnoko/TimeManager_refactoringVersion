@@ -20,5 +20,6 @@ fun NavigationScreen() {
     NavHost(navController, "HomeScreen") {
         composable("HomeScreen") { HomeScreen(navController, timeDB) }
         composable("DataScreen") { DataScreen(navController, timeDB, wcDB) }
+        composable("TimeMeasurementScreen") { TimeMeasurementScreen(navController, timeDB, wcDB) }
     }
 }
