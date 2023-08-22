@@ -90,8 +90,10 @@ fun TimeMeasurementScreen(navController: NavController, timeDB: TimeDataDatabase
     val coroutineScope = rememberCoroutineScope()
     val context = LocalContext.current
 
+    //LaunchedEffectは無限ループなのでcurrentTimeを渡す必要がなさそうだったので適当に変数を用意して渡した
+    val testval = ""
     //1秒ごとに画面の現在時刻を更新する
-    LaunchedEffect(currentTime) {
+    LaunchedEffect(/*currentTime*/testval) {
         while (true) {
             currentTime = System.currentTimeMillis()
 
