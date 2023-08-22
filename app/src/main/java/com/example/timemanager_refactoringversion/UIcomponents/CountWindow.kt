@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun CountWindow(ans: String, ansTime: Int) {
+fun CountWindow(ans: String) {
     OutlinedCard(border = BorderStroke(3.dp, Color(0xff00f0f0))) {
         Text(
             text = ans,

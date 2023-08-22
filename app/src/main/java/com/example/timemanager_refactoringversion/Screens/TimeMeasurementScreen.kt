@@ -174,7 +174,7 @@ fun TimeMeasurementScreen(navController: NavController, timeDB: TimeDataDatabase
         }
         Spacer(modifier = Modifier.height(2.dp))
 
-        CountWindow(ans, ansTime)
+        CountWindow(ans)
         Spacer(modifier = Modifier.height(20.dp))
 
         Divider()
